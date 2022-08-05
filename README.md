@@ -22,7 +22,7 @@ bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master
 
 ### Any tips?
 
-Yes, plenty [here](tips/tips.md)!
+Yes, plenty [here](tips/README.md)!
 
 ## TODO LIST:
 

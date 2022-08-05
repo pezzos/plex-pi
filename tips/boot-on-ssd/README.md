@@ -2,7 +2,7 @@
 
 ## Download Raspberry Pi Imager
 
-Goto [[https://www.raspberrypi.com/software/]]
+Goto [https://www.raspberrypi.com/software/]
 
 or with Ubuntu:
 
@@ -14,4 +14,4 @@ sudo apt install rpi-imager
 
 ### Chose an OS
 
-![Chose the OS](images/1.png?raw=true 'Chose the OS')
+![Chose OS](images/1.png?raw=true 'Chose OS')
