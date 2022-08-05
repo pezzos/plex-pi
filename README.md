@@ -1,6 +1,6 @@
 # plex-pi
 
-# The full setup of Plex Media Server on a Raspberry Pi with scripts like S3 backup and an SSD for the OS.
+# The full setup of Plex Media Server on a RPi
 
 Plex Media Server on a Raspberry Pi with a script to allow an easy install.
 
@@ -19,6 +19,10 @@ bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master
 ## Options
 
 ## FAQ
+
+### Any tips?
+
+Yes, plenty [here](tips/tips.md)!
 
 ## TODO LIST:
 
