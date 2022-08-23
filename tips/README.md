@@ -64,10 +64,10 @@ sudo dietpi-software
 
 git clone https://github.com/pezzos/plex-pi.git
 
-sudo cp ~/plex-pi/x735-v2.5-scripts/pwm_fan_control.py /root/
-sudo cp ~/plex-pi/x735-v2.5-scripts/x735pwr.sh /root/
-sudo cp ~/plex-pi/x735-v2.5-scripts/rpifan-control.service /etc/systemd/system/
-sudo cp ~/plex-pi/x735-v2.5-scripts/rpipower-control.service /etc/systemd/system/
+sudo cp ~/plex-pi/scripts/pwm_fan_control.py /root/
+sudo cp ~/plex-pi/scripts/x735pwr.sh /root/
+sudo cp ~/plex-pi/scripts/rpifan-control.service /etc/systemd/system/
+sudo cp ~/plex-pi/scripts/rpipower-control.service /etc/systemd/system/
 sudo systemctl enable pigpiod
 sudo systemctl enable rpifan-control
 sudo systemctl enable rpipower-control
@@ -75,8 +75,14 @@ sudo systemctl start pigpiod
 sudo systemctl start rpifan-control
 sudo systemctl start rpipower-control
 
-sudo cp ~/plex-pi/x735-v2.5-scripts/update /etc/cron.daily
+sudo cp ~/plex-pi/scripts/update /etc/cron.daily
 sudo chmod +x /etc/cron.daily/update
+
+exfat-utils ntfs-3g
+
+UUID="C0D4-CE3A" TYPE="exfat"
+UUID="8482FAAD82FAA2BA" TYPE="ntfs"
+sudo blkid
 
 ## Install required packages
 
