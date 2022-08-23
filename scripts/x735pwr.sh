@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# From https://github.com/thorkseng/x735-v2.5
+
 SHUTDOWN=5
 echo "$SHUTDOWN" > /sys/class/gpio/export
 echo "in" > /sys/class/gpio/gpio$SHUTDOWN/direction
