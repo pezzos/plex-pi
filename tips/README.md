@@ -45,7 +45,7 @@ sudo vim /etc/hosts > 192.168.1.1
 ### Add your own user
 
 useradd -m -s /bin/bash -d /home/pezzos pezzos
-usermod -G sudo pezzos
+usermod -G sudo,gpio pezzos
 passwd pezzos
 
 Test to connect and to sudo, if ok, continue
@@ -60,20 +60,23 @@ DROPBEAR_EXTRA_ARGS="-w -g"
 sudo dietpi-software
 
 > plexmediaserver git python (3 + RPi.GPIO)
-> sudo apt install pigpiod
-
-sudo systemctl enable pigpiod
+> sudo apt install file pigpio pigpiod python3-pigpio python3-rpi.gpio python3-smbus rpi.gpio-common xz-utils
 
 git clone https://github.com/pezzos/plex-pi.git
 
-sudo cp ~/plex-pi/x735-v2.5-scripts/read_fan_speed.py /root/
 sudo cp ~/plex-pi/x735-v2.5-scripts/pwm_fan_control.py /root/
-sudo vim /etc/systemd/system/rpifan.service
-sudo systemctl enable rpifan
-sudo systemctl start rpifan
+sudo cp ~/plex-pi/x735-v2.5-scripts/x735pwr.sh /root/
+sudo cp ~/plex-pi/x735-v2.5-scripts/rpifan-control.service /etc/systemd/system/
+sudo cp ~/plex-pi/x735-v2.5-scripts/rpipower-control.service /etc/systemd/system/
+sudo systemctl enable pigpiod
+sudo systemctl enable rpifan-control
+sudo systemctl enable rpipower-control
+sudo systemctl start pigpiod
+sudo systemctl start rpifan-control
+sudo systemctl start rpipower-control
 
 ## Install required packages
 
-sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g pigpio plexmediaserver python python-pigpio python-smbus python3-pigpio software-properties-common xz-utils
+sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g software-properties-common
 
 vim p7zip-full locate

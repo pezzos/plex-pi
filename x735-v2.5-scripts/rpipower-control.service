@@ -1,5 +1,5 @@
 [Unit]
-Description=RPi Fan Read Daemon
+Description=RPi Power Control Daemon
 After=syslog.target
 
 [Service]
@@ -7,7 +7,7 @@ User=root
 Group=root
 
 Type=simple
-ExecStart=/usr/bin/python3 /root/read_fan_speed.py
+ExecStart=/usr/bin/python3 /root/x735pwr.sh
 TimeoutStopSec=20
 KillMode=process
 Restart=on-failure

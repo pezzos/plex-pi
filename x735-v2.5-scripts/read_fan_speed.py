@@ -1,4 +1,7 @@
 #!/usr/bin/python
+
+# From https://github.com/thorkseng/x735-v2.5
+
 # this python code is base python 3, not python 2
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
