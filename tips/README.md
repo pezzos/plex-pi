@@ -60,7 +60,7 @@ DROPBEAR_EXTRA_ARGS="-w -g"
 sudo dietpi-software
 
 > plexmediaserver git python (3 + RPi.GPIO)
-> sudo apt install file pigpio pigpiod python3-pigpio python3-rpi.gpio python3-smbus rpi.gpio-common xz-utils
+> sudo apt install file pigpio pigpiod python3-pigpio python3-rpi.gpio python3-smbus rpi.gpio-common vim xz-utils
 
 git clone https://github.com/pezzos/plex-pi.git
 
@@ -75,8 +75,9 @@ sudo systemctl start pigpiod
 sudo systemctl start rpifan-control
 sudo systemctl start rpipower-control
 
+sudo cp ~/plex-pi/x735-v2.5-scripts/update /etc/cron.daily
+sudo chmod +x /etc/cron.daily/update
+
 ## Install required packages
 
-sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g software-properties-common
-
-vim p7zip-full locate
+sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g software-properties-common p7zip-full locate
