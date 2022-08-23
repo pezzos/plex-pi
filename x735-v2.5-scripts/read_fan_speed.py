@@ -15,16 +15,19 @@ GPIO.setup(TACH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 t = time.time()
 rpm = 0
 
+
 def fell(n):
     global t
     global rpm
 
     dt = time.time() - t
-    if dt < 0.005: return
+    if dt < 0.005:
+        return
 
     freq = 1 / dt
     rpm = (freq / PULSE) * 60
     t = time.time()
+
 
 GPIO.add_event_detect(TACH, GPIO.FALLING, fell)
 

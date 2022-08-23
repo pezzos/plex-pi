@@ -1,0 +1,16 @@
+[Unit]
+Description=RPi Fan Control Daemon
+After=syslog.target
+
+[Service]
+User=root
+Group=root
+
+Type=simple
+ExecStart=/usr/bin/python3 /root/pwm_fan_control.py
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

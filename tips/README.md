@@ -30,3 +30,50 @@ DietPi-Set_software
 A serial/UART console is currently enabled, would you like to disable it?
 
 > Yes
+
+Install
+
+> Ok for the pure minimal image (or install plexmediaserver from here)
+
+Exit
+
+## Add some security fixes
+
+sudo vim /etc/hostname
+sudo vim /etc/hosts > 192.168.1.1
+
+### Add your own user
+
+useradd -m -s /bin/bash -d /home/pezzos pezzos
+usermod -G sudo pezzos
+passwd pezzos
+
+Test to connect and to sudo, if ok, continue
+
+### Remove root access to SSH
+
+[dropbear doc](https://linux.die.net/man/8/dropbear)
+echo "OPTIONS=-w -g" >> /etc/default/dropbear
+DROPBEAR_EXTRA_ARGS=""
+DROPBEAR_EXTRA_ARGS="-w -g"
+
+sudo dietpi-software
+
+> plexmediaserver git python (3 + RPi.GPIO)
+> sudo apt install pigpiod
+
+sudo systemctl enable pigpiod
+
+git clone https://github.com/pezzos/plex-pi.git
+
+sudo cp ~/plex-pi/x735-v2.5-scripts/read_fan_speed.py /root/
+sudo cp ~/plex-pi/x735-v2.5-scripts/pwm_fan_control.py /root/
+sudo vim /etc/systemd/system/rpifan.service
+sudo systemctl enable rpifan
+sudo systemctl start rpifan
+
+## Install required packages
+
+sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g pigpio plexmediaserver python python-pigpio python-smbus python3-pigpio software-properties-common xz-utils
+
+vim p7zip-full locate
