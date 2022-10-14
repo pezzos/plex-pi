@@ -7,7 +7,7 @@ User=root
 Group=root
 
 Type=simple
-ExecStart=/root/x735pwr.sh
+ExecStart=/root/pwr.sh
 TimeoutStopSec=20
 KillMode=process
 Restart=on-failure

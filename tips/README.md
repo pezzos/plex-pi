@@ -33,39 +33,39 @@ A serial/UART console is currently enabled, would you like to disable it?
 
 Install
 
-> Ok for the pure minimal image (or install plexmediaserver from here)
+> Ok for the pure minimal image (or install plexmediaserver + git + python (3 + RPi.GPIO) from here)
 
 Exit
 
 ## Add some security fixes
 
-sudo vim /etc/hostname
-sudo vim /etc/hosts > 192.168.1.1
+````sudo vim /etc/hostname
+sudo vim /etc/hosts
+> Add 192.168.1.1```
 
 ### Add your own user
 
-useradd -m -s /bin/bash -d /home/pezzos pezzos
+```useradd -m -s /bin/bash -d /home/pezzos pezzos
 usermod -G sudo,gpio pezzos
-passwd pezzos
+passwd pezzos```
 
 Test to connect and to sudo, if ok, continue
 
 ### Remove root access to SSH
 
 [dropbear doc](https://linux.die.net/man/8/dropbear)
-echo "OPTIONS=-w -g" >> /etc/default/dropbear
-DROPBEAR_EXTRA_ARGS=""
-DROPBEAR_EXTRA_ARGS="-w -g"
+```vim /etc/default/dropbear
+DROPBEAR_EXTRA_ARGS="-w -g"```
 
-sudo dietpi-software
+```sudo dietpi-software
+plexmediaserver git python (3 + RPi.GPIO)```
 
-> plexmediaserver git python (3 + RPi.GPIO)
-> sudo apt install file pigpio pigpiod python3-pigpio python3-rpi.gpio python3-smbus rpi.gpio-common vim xz-utils
+```sudo apt install file pigpio pigpiod python3-pigpio python3-rpi.gpio python3-smbus rpi.gpio-common vim xz-utils```
 
-git clone https://github.com/pezzos/plex-pi.git
+```git clone https://github.com/pezzos/plex-pi.git
 
 sudo cp ~/plex-pi/scripts/pwm_fan_control.py /root/
-sudo cp ~/plex-pi/scripts/x735pwr.sh /root/
+sudo cp ~/plex-pi/scripts/pwr.sh /root/
 sudo cp ~/plex-pi/scripts/rpifan-control.service /etc/systemd/system/
 sudo cp ~/plex-pi/scripts/rpipower-control.service /etc/systemd/system/
 sudo systemctl enable pigpiod
@@ -76,14 +76,17 @@ sudo systemctl start rpifan-control
 sudo systemctl start rpipower-control
 
 sudo cp ~/plex-pi/scripts/update /etc/cron.daily
-sudo chmod +x /etc/cron.daily/update
+sudo chmod +x /etc/cron.daily/update```
 
 exfat-utils ntfs-3g
 
 UUID="C0D4-CE3A" TYPE="exfat"
-UUID="8482FAAD82FAA2BA" TYPE="ntfs"
+
+UUID="8482FAAD82FAA2BA" TYPE="ntfs"s
+
 sudo blkid
 
 ## Install required packages
 
-sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g software-properties-common p7zip-full locate
+```sudo apt install -y apt-transport-https binutils exfat-utils git libchromaprint-tools libjna-java libjna-jni libmediainfo0v5 mediainfo ntfs-3g software-properties-common p7zip-full locate```
+````
